@@ -1,0 +1,726 @@
+/**
+ * MTech Components - MTechWare Theme Part 5
+ * Modals and Overlays
+ * Matching MTechWare.github.io design language
+ */
+
+/* === PART 5: Modals and Overlays === */
+
+/* === Modal Overlay === */
+.mtech-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.mtech-modal-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+/* === Modal Container === */
+.mtech-modal {
+    background: var(--background-modal);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 30px var(--glow-color, rgba(255, 152, 0, 0.1));
+    backdrop-filter: blur(20px);
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    transform: scale(0.9) translateY(-20px);
+    transition: all var(--transition-cubic);
+}
+
+.mtech-modal-overlay.show .mtech-modal {
+    transform: scale(1) translateY(0);
+}
+
+/* === Modal Sizes === */
+.mtech-modal-sm {
+    max-width: 400px;
+}
+
+.mtech-modal-md {
+    max-width: 600px;
+}
+
+.mtech-modal-lg {
+    max-width: 800px;
+}
+
+.mtech-modal-xl {
+    max-width: 1000px;
+}
+
+.mtech-modal-full {
+    max-width: 95vw;
+    max-height: 95vh;
+}
+
+/* === Modal Header === */
+.mtech-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(135deg, 
+        var(--glow-color, rgba(255, 152, 0, 0.05)) 0%, 
+        transparent 50%);
+}
+
+.mtech-modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.mtech-modal-icon {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+}
+
+.mtech-modal-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+}
+
+.mtech-modal-close:hover {
+    background: var(--mtech-modal-close-hover-bg, rgba(255, 152, 0, 0.1));
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* === Modal Body === */
+.mtech-modal-body {
+    padding: var(--spacing-xl);
+    max-height: 60vh;
+    overflow-y: auto;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.mtech-modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.mtech-modal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mtech-modal-body::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.mtech-modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--border-hover);
+}
+
+/* === Modal Footer === */
+.mtech-modal-footer {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+    padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-xl);
+    border-top: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.mtech-modal-footer.center {
+    justify-content: center;
+}
+
+.mtech-modal-footer.start {
+    justify-content: flex-start;
+}
+
+.mtech-modal-footer.between {
+    justify-content: space-between;
+}
+
+/* === Notification Toast === */
+.mtech-toast-container {
+    position: fixed;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    max-width: 400px;
+    width: 100%;
+}
+
+.mtech-toast {
+    background: var(--background-modal);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        0 0 15px var(--glow-color, rgba(255, 152, 0, 0.1));
+    backdrop-filter: blur(15px);
+    transform: translateX(100%);
+    transition: all var(--transition-cubic);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+}
+
+.mtech-toast.show {
+    transform: translateX(0);
+}
+
+.mtech-toast::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--primary-color);
+}
+
+.mtech-toast.success::before {
+    background: var(--success-color);
+}
+
+.mtech-toast.error::before {
+    background: var(--error-color);
+}
+
+.mtech-toast.warning::before {
+    background: var(--warning-color);
+}
+
+.mtech-toast.info::before {
+    background: var(--info-color);
+}
+
+.mtech-toast-icon {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.mtech-toast.success .mtech-toast-icon {
+    color: var(--success-color);
+}
+
+.mtech-toast.error .mtech-toast-icon {
+    color: var(--error-color);
+}
+
+.mtech-toast.warning .mtech-toast-icon {
+    color: var(--warning-color);
+}
+
+.mtech-toast.info .mtech-toast-icon {
+    color: var(--info-color);
+}
+
+.mtech-toast-content {
+    flex-grow: 1;
+}
+
+.mtech-toast-title {
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.95rem;
+}
+
+.mtech-toast-message {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+.mtech-toast-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-normal);
+    flex-shrink: 0;
+}
+
+.mtech-toast-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+/* === Progress Bar in Toast === */
+.mtech-toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--primary-color);
+    transition: width linear;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.mtech-toast.success .mtech-toast-progress {
+    background: var(--success-color);
+}
+
+.mtech-toast.error .mtech-toast-progress {
+    background: var(--error-color);
+}
+
+.mtech-toast.warning .mtech-toast-progress {
+    background: var(--warning-color);
+}
+
+.mtech-toast.info .mtech-toast-progress {
+    background: var(--info-color);
+}
+
+/* === Tooltip === */
+.mtech-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.mtech-tooltip-content {
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--background-modal);
+    color: var(--text-primary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    white-space: nowrap;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.mtech-tooltip-content::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--border-color);
+}
+
+.mtech-tooltip:hover .mtech-tooltip-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* === Tooltip Positions === */
+.mtech-tooltip-top .mtech-tooltip-content {
+    bottom: 125%;
+    top: auto;
+}
+
+.mtech-tooltip-bottom .mtech-tooltip-content {
+    top: 125%;
+    bottom: auto;
+}
+
+.mtech-tooltip-bottom .mtech-tooltip-content::after {
+    top: -10px;
+    border-top-color: transparent;
+    border-bottom-color: var(--border-color);
+}
+
+.mtech-tooltip-left .mtech-tooltip-content {
+    right: 125%;
+    left: auto;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+}
+
+.mtech-tooltip-left .mtech-tooltip-content::after {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left-color: var(--border-color);
+    border-top-color: transparent;
+}
+
+.mtech-tooltip-right .mtech-tooltip-content {
+    left: 125%;
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+}
+
+.mtech-tooltip-right .mtech-tooltip-content::after {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right-color: var(--border-color);
+    border-top-color: transparent;
+}
+
+/* === Popover === */
+.mtech-popover {
+    position: absolute;
+    background: var(--background-modal);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        0 0 15px var(--glow-color, rgba(255, 152, 0, 0.1));
+    backdrop-filter: blur(15px);
+    z-index: 1500;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+    transition: all var(--transition-normal);
+    max-width: 300px;
+    min-width: 200px;
+}
+
+.mtech-popover.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.mtech-popover-header {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    color: var(--text-white);
+    font-size: 0.95rem;
+}
+
+.mtech-popover-body {
+    padding: var(--spacing-lg);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* === Dropdown Menu === */
+.mtech-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.mtech-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--background-modal);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(255, 152, 0, 0.1);
+    backdrop-filter: blur(15px);
+    z-index: 1500;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all var(--transition-normal);
+    min-width: 200px;
+    padding: var(--spacing-sm) 0;
+    margin-top: var(--spacing-xs);
+}
+
+.mtech-dropdown.open .mtech-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.mtech-dropdown-item {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all var(--transition-normal);
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.mtech-dropdown-item:hover {
+    background: var(--mtech-dropdown-item-hover-bg, rgba(255, 152, 0, 0.1));
+    color: var(--primary-color);
+}
+
+.mtech-dropdown-item.active {
+    background: var(--mtech-dropdown-item-active-bg, rgba(255, 152, 0, 0.15));
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.mtech-dropdown-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: var(--spacing-sm) 0;
+}
+
+/* === Loading Overlay === */
+.mtech-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 2500;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.mtech-loading-overlay.show {
+    display: flex;
+}
+
+.mtech-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--border-color, rgba(255, 152, 0, 0.2));
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: mtech-spin 1s linear infinite;
+}
+
+.mtech-spinner-sm {
+    width: 24px;
+    height: 24px;
+    border-width: 2px;
+}
+
+.mtech-spinner-lg {
+    width: 64px;
+    height: 64px;
+    border-width: 6px;
+}
+
+@keyframes mtech-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.mtech-loading-text {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* === Backdrop === */
+.mtech-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+}
+
+.mtech-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    .mtech-modal {
+        margin: var(--spacing-md);
+        max-width: calc(100vw - 2rem);
+        max-height: calc(100vh - 2rem);
+    }
+    
+    .mtech-modal-header,
+    .mtech-modal-body,
+    .mtech-modal-footer {
+        padding: var(--spacing-lg);
+    }
+    
+    .mtech-modal-title {
+        font-size: 1.25rem;
+    }
+    
+    .mtech-toast-container {
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        left: var(--spacing-md);
+        max-width: none;
+    }
+    
+    .mtech-toast {
+        padding: var(--spacing-md);
+    }
+    
+    .mtech-dropdown-menu {
+        left: auto;
+        right: 0;
+        min-width: 180px;
+    }
+    
+    .mtech-tooltip-content {
+        max-width: 200px;
+        white-space: normal;
+    }
+}
+
+@media (max-width: 480px) {
+    .mtech-modal-overlay {
+        padding: var(--spacing-sm);
+    }
+    
+    .mtech-modal {
+        margin: 0;
+        max-width: 100vw;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+    
+    .mtech-modal-header,
+    .mtech-modal-body,
+    .mtech-modal-footer {
+        padding: var(--spacing-md);
+    }
+    
+    .mtech-modal-footer {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .mtech-modal-footer .mtech-btn {
+        width: 100%;
+    }
+    
+    .mtech-toast {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .mtech-toast-title {
+        font-size: 0.9rem;
+    }
+    
+    .mtech-toast-message {
+        font-size: 0.8rem;
+    }
+}
+
+/* === Animation Enhancements === */
+.mtech-modal-slide-up {
+    transform: translateY(100%);
+}
+
+.mtech-modal-overlay.show .mtech-modal-slide-up {
+    transform: translateY(0);
+}
+
+.mtech-modal-slide-down {
+    transform: translateY(-100%);
+}
+
+.mtech-modal-overlay.show .mtech-modal-slide-down {
+    transform: translateY(0);
+}
+
+.mtech-modal-slide-left {
+    transform: translateX(-100%);
+}
+
+.mtech-modal-overlay.show .mtech-modal-slide-left {
+    transform: translateX(0);
+}
+
+.mtech-modal-slide-right {
+    transform: translateX(100%);
+}
+
+.mtech-modal-overlay.show .mtech-modal-slide-right {
+    transform: translateX(0);
+}
+
+/* === Accessibility === */
+.mtech-modal-overlay[aria-hidden="true"] {
+    display: none;
+}
+
+.mtech-modal:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.mtech-toast[role="alert"] {
+    /* Screen reader announcements */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mtech-modal,
+    .mtech-toast,
+    .mtech-tooltip-content,
+    .mtech-popover,
+    .mtech-dropdown-menu {
+        transition: none;
+    }
+    
+    .mtech-spinner {
+        animation: none;
+        border-top-color: var(--primary-color);
+    }
+}

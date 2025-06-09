@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTech Components - MTechWare Theme Demo</title>
+    
+    <!-- Include the theme parts -->
+    <link rel="stylesheet" href="mtech-theme-base.css">
+    <link rel="stylesheet" href="mtech-theme-buttons.css">
+    <link rel="stylesheet" href="mtech-theme-cards.css">
+    <link rel="stylesheet" href="mtech-theme-forms.css">
+    <link rel="stylesheet" href="mtech-theme-modals.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Simple demo-specific styles */
+        .demo-section {
+            margin-bottom: 3rem;
+        }
+        
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        /* Theme color variables now in CSS: .theme-orange and .theme-green classes */
+    </style>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="mtech-bg-pattern"></div>
+    <div class="mtech-particles"></div>
+
+    <!-- Navigation Bar (from mtechware.github.io) -->
+    <header class="mtech-header">
+      <nav>
+        <div style="display: flex; align-items: center;">
+            <a href="#" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <i class="fas fa-terminal"></i>
+                </div>
+                <div class="nav-logo-text">
+                    <span class="brand-name">MTech</span>
+                    <span class="brand-tagline">IT Solutions</span>
+                </div>
+            </a>
+            <div class="nav-status">
+                <div class="status-indicator"></div>
+                <span class="status-text">Online</span>
+            </div>
+        </div>
+        <div class="nav-main-container">
+            <ul class="main-nav">
+              <li><a href="#" class="active">Home</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav">
+             <li><a href="#">Home</a></li>
+             <li><a href="#features">Features</a></li>
+             <li><a href="#contact">Contact</a></li>
+         </ul>
+      </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="mtech-container" style="padding-top: 2rem; padding-bottom: 2rem;">
+        
+        <!-- Header -->
+        <div class="mtech-text-center mtech-mb-2xl">
+            <h1 class="mtech-title-xl">
+                <span class="mtech-highlight">MTech Components</span>
+            </h1>
+            <p class="mtech-text-secondary" style="font-size: 1.2rem;">
+                <strong>Official:</strong> MTech Orange Theme is the default.<br>
+                Themed with MTechWare.github.io design language
+            </p>
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="demo-section">
+            <h2 class="demo-title">
+                <i class="fas fa-mouse-pointer"></i> Buttons
+            </h2>
+            <div class="mtech-btn-container mtech-btn-container-center">
+                <button class="mtech-btn mtech-btn-primary">
+                    <i class="fas fa-star"></i> Primary
+                </button>
+                <button class="mtech-btn mtech-btn-secondary">
+                    <i class="fas fa-cog"></i> Secondary
+                </button>
+                <button class="mtech-btn mtech-btn-success">
+                    <i class="fas fa-check"></i> Success
+                </button>
+                <button class="mtech-btn mtech-btn-error">
+                    <i class="fas fa-times"></i> Error
+                </button>
+            </div>
+        </div>
+
+        <!-- Cards Section -->
+        <div class="demo-section">
+            <h2 class="demo-title">
+                <i class="fas fa-th-large"></i> Cards
+            </h2>
+            <div class="mtech-grid mtech-grid-3">
+                <div class="mtech-card mtech-card-glass">
+                    <div class="mtech-card-header">
+                        <div class="mtech-card-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h3 class="mtech-card-title">Performance</h3>
+                            <p class="mtech-card-subtitle">Optimized Components</p>
+                        </div>
+                    </div>
+                    <div class="mtech-card-body">
+                        <p class="mtech-card-content">
+                            High-performance components with hardware acceleration and optimized animations.
+                        </p>
+                        <div class="mtech-card-actions">
+                            <button class="mtech-btn mtech-btn-primary mtech-btn-sm">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mtech-card mtech-card-glass mtech-card-featured">
+                    <div class="mtech-card-header">
+                        <div class="mtech-card-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div>
+                            <h3 class="mtech-card-title">Design</h3>
+                            <p class="mtech-card-subtitle">MTechWare Theme</p>
+                        </div>
+                    </div>
+                    <div class="mtech-card-body">
+                        <p class="mtech-card-content">
+                            Beautiful glassmorphism design matching your MTechWare.github.io website.
+                        </p>
+                        <div class="mtech-card-actions">
+                            <button class="mtech-btn mtech-btn-primary mtech-btn-sm">Explore</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mtech-card mtech-card-glass">
+                    <div class="mtech-card-header">
+                        <div class="mtech-card-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="mtech-card-title">Responsive</h3>
+                            <p class="mtech-card-subtitle">Mobile First</p>
+                        </div>
+                    </div>
+                    <div class="mtech-card-body">
+                        <p class="mtech-card-content">
+                            Fully responsive design that works perfectly on all devices and screen sizes.
+                        </p>
+                        <div class="mtech-card-actions">
+                            <button class="mtech-btn mtech-btn-primary mtech-btn-sm">Test</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="demo-section">
+            <h2 class="demo-title">
+                <i class="fas fa-edit"></i> Forms
+            </h2>
+            <div class="mtech-flex mtech-flex-center">
+                <form class="mtech-form" style="max-width: 400px;">
+                    <div class="mtech-form-group">
+                        <label class="mtech-form-label required">Name</label>
+                        <input type="text" class="mtech-input" placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="mtech-form-group">
+                        <label class="mtech-form-label required">Email</label>
+                        <div class="mtech-input-icon">
+                            <input type="email" class="mtech-input" placeholder="Enter your email">
+                            <i class="mtech-input-icon-left fas fa-envelope"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="mtech-form-group">
+                        <label class="mtech-form-label">Message</label>
+                        <textarea class="mtech-input mtech-textarea" placeholder="Your message..."></textarea>
+                    </div>
+                    
+                    <div class="mtech-form-group">
+                        <label class="mtech-checkbox">
+                            <input type="checkbox">
+                            <span class="mtech-checkbox-mark"></span>
+                            I agree to the terms and conditions
+                        </label>
+                    </div>
+                    
+                    <div class="mtech-form-actions mtech-form-actions-center">
+                        <button type="button" class="mtech-btn mtech-btn-secondary">Cancel</button>
+                        <button type="submit" class="mtech-btn mtech-btn-primary">
+                            <i class="fas fa-paper-plane"></i> Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Interactive Demo -->
+        <div class="demo-section">
+            <h2 class="demo-title">
+                <i class="fas fa-play"></i> Interactive Demo
+            </h2>
+            <div class="mtech-text-center">
+                <div class="mtech-btn-container mtech-btn-container-center mtech-mb-lg">
+                    <button class="mtech-btn mtech-btn-primary" onclick="showModal()">
+                        <i class="fas fa-window-maximize"></i> Show Modal
+                    </button>
+                    <button class="mtech-btn mtech-btn-success" onclick="showToast('success')">
+                        <i class="fas fa-check"></i> Success Toast
+                    </button>
+                    <button class="mtech-btn mtech-btn-error" onclick="showToast('error')">
+                        <i class="fas fa-exclamation"></i> Error Toast
+                    </button>
+                </div>
+                
+                <!-- Toggle Switch Demo -->
+                <div class="mtech-flex mtech-flex-center mtech-gap-lg">
+                    <label class="mtech-toggle">
+                        <input type="checkbox" onchange="toggleTheme(this)">
+                        <span class="mtech-toggle-slider"></span>
+                    </label>
+                    <span class="mtech-text-secondary"><strong>Official:</strong> Demo Effect Toggle</span>
+                    <button class="mtech-btn mtech-btn-secondary" id="theme-toggle-btn" type="button" style="margin-left: 1rem;">
+                        <i class="fas fa-adjust"></i> Switch Theme
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="mtech-modal-overlay" id="demo-modal">
+        <div class="mtech-modal mtech-modal-md">
+            <div class="mtech-modal-header">
+                <h3 class="mtech-modal-title">
+                    <i class="mtech-modal-icon fas fa-info-circle"></i>
+                    MTech Components Demo
+                </h3>
+                <button class="mtech-modal-close" onclick="hideModal()">&times;</button>
+            </div>
+            <div class="mtech-modal-body">
+                <p>This is a demo of the MTech Components library with the MTechWare theme!</p>
+                <p>Features include:</p>
+                <ul>
+                    <li>🎨 Beautiful glassmorphism design</li>
+                    <li>🚀 Hardware-accelerated animations</li>
+                    <li>📱 Fully responsive layout</li>
+                    <li>♿ Accessibility support</li>
+                    <li>🎯 Performance optimized</li>
+                </ul>
+            </div>
+            <div class="mtech-modal-footer">
+                <button class="mtech-btn mtech-btn-secondary" onclick="hideModal()">Close</button>
+                <button class="mtech-btn mtech-btn-primary" onclick="showToast('info')">
+                    <i class="fas fa-thumbs-up"></i> Awesome!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="mtech-toast-container" id="toast-container"></div>
+
+    <script>
+        // Initialize particles
+        function createParticles() {
+            const container = document.querySelector('.mtech-particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'mtech-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (6 + Math.random() * 4) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Modal functions
+        function showModal() {
+            document.getElementById('demo-modal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideModal() {
+            document.getElementById('demo-modal').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        // Toast notification function
+        function showToast(type) {
+            const container = document.getElementById('toast-container');
+            
+            const icons = {
+                success: 'fas fa-check-circle',
+                error: 'fas fa-exclamation-circle',
+                info: 'fas fa-info-circle',
+                warning: 'fas fa-exclamation-triangle'
+            };
+            
+            const messages = {
+                success: { title: 'Success!', message: 'Operation completed successfully.' },
+                error: { title: 'Error!', message: 'Something went wrong. Please try again.' },
+                info: { title: 'Info', message: 'This is an informational message.' },
+                warning: { title: 'Warning!', message: 'Please check your input.' }
+            };
+
+            const toast = document.createElement('div');
+            toast.className = `mtech-toast ${type}`;
+            toast.innerHTML = `
+                <i class="mtech-toast-icon ${icons[type]}"></i>
+                <div class="mtech-toast-content">
+                    <div class="mtech-toast-title">${messages[type].title}</div>
+                    <div class="mtech-toast-message">${messages[type].message}</div>
+                </div>
+                <button class="mtech-toast-close" onclick="this.parentElement.remove()">&times;</button>
+            `;
+            
+            container.appendChild(toast);
+            
+            // Show toast
+            setTimeout(() => toast.classList.add('show'), 100);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 5000);
+        }
+
+        // Theme toggle demo
+        function toggleTheme(checkbox) {
+            const html = document.documentElement;
+            if (checkbox.checked) {
+                html.classList.remove('theme-orange');
+                html.classList.add('theme-green');
+                showToast('info');
+            } else {
+                html.classList.remove('theme-green');
+                html.classList.add('theme-orange');
+                showToast('info');
+            }
+        }
+
+        // Orange/Green theme toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default theme
+            document.documentElement.classList.add('theme-orange');
+            let currentTheme = 'orange';
+            const themeBtn = document.getElementById('theme-toggle-btn');
+            if (themeBtn) {
+                themeBtn.addEventListener('click', function() {
+                    if (currentTheme === 'orange') {
+                        document.documentElement.classList.remove('theme-orange');
+                        document.documentElement.classList.add('theme-green');
+                        currentTheme = 'green';
+                        showToast('info');
+                    } else {
+                        document.documentElement.classList.remove('theme-green');
+                        document.documentElement.classList.add('theme-orange');
+                        currentTheme = 'orange';
+                        showToast('info');
+                    }
+                });
+            }
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideModal();
+            }
+        });
+
+        // Close modal on backdrop click
+        document.getElementById('demo-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideModal();
+            }
+        });
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Show welcome toast
+            setTimeout(() => {
+                showToast('info');
+            }, 1000);
+        });
+
+        // Form submission demo
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('success');
+        });
+    </script>
+    <script>
+    // Mobile menu toggle for nav bar (from mtechware.github.io)
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileNavUl = document.querySelector('nav ul.mobile-nav');
+        if (menuToggle && mobileNavUl) {
+            menuToggle.addEventListener('click', function() {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                mobileNavUl.classList.toggle('active');
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                }
+            });
+            mobileNavUl.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (mobileNavUl.classList.contains('active')) {
+                        mobileNavUl.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        const icon = menuToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            });
+        }
+    });
+    </script>
+</body>
+</html>

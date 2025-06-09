@@ -1,0 +1,621 @@
+/**
+ * MTech Components - MTechWare Theme Part 4
+ * Forms and Input Components
+ * Matching MTechWare.github.io design language
+ */
+
+/* === PART 4: Forms and Input Components === */
+
+/* === Base Form Styles === */
+.mtech-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    max-width: 600px;
+    width: 100%;
+}
+
+.mtech-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    position: relative;
+}
+
+.mtech-form-row {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-end;
+}
+
+.mtech-form-row .mtech-form-group {
+    flex: 1;
+}
+
+/* === Form Labels === */
+.mtech-form-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.mtech-form-label.required::after {
+    content: '*';
+    color: var(--error-color);
+    font-weight: 700;
+}
+
+.mtech-form-label-help {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-left: auto;
+}
+
+/* === Base Input Styles === */
+.mtech-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: var(--font-family);
+    transition: all var(--transition-normal);
+    outline: none;
+    backdrop-filter: blur(10px);
+}
+
+.mtech-input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+.mtech-input:focus {
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        0 0 0 3px rgba(255, 152, 0, 0.1),
+        0 4px 15px rgba(255, 152, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.mtech-input:hover:not(:focus) {
+    border-color: var(--border-hover);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* === Input States === */
+.mtech-input.valid {
+    border-color: var(--success-color);
+    background: rgba(76, 175, 80, 0.05);
+}
+
+.mtech-input.invalid {
+    border-color: var(--error-color);
+    background: rgba(244, 67, 54, 0.05);
+}
+
+.mtech-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* === Input Sizes === */
+.mtech-input-sm {
+    padding: 8px 12px;
+    font-size: 0.875rem;
+}
+
+.mtech-input-lg {
+    padding: 16px 20px;
+    font-size: 1.125rem;
+}
+
+/* === Textarea === */
+.mtech-textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: var(--font-family);
+    line-height: 1.5;
+}
+
+.mtech-textarea-sm {
+    min-height: 80px;
+}
+
+.mtech-textarea-lg {
+    min-height: 160px;
+}
+
+/* === Select Dropdown === */
+.mtech-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ff9800' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.mtech-select:focus {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffb74d' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+}
+
+/* === Input Groups === */
+.mtech-input-group {
+    display: flex;
+    position: relative;
+}
+
+.mtech-input-group .mtech-input {
+    border-radius: 0;
+}
+
+.mtech-input-group .mtech-input:first-child {
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.mtech-input-group .mtech-input:last-child {
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.mtech-input-group .mtech-input:only-child {
+    border-radius: var(--radius-md);
+}
+
+.mtech-input-addon {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--mtech-form-bg, rgba(255, 152, 0, 0.1));
+    border: 2px solid var(--border-color);
+    color: var(--primary-color);
+    font-weight: 600;
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+}
+
+.mtech-input-addon:first-child {
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+    border-right: none;
+}
+
+.mtech-input-addon:last-child {
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    border-left: none;
+}
+
+/* === Input with Icon === */
+.mtech-input-icon {
+    position: relative;
+}
+
+.mtech-input-icon .mtech-input {
+    padding-left: 44px;
+}
+
+.mtech-input-icon .mtech-input-icon-left {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    transition: color var(--transition-normal);
+    pointer-events: none;
+}
+
+.mtech-input-icon .mtech-input:focus + .mtech-input-icon-left {
+    color: var(--primary-color);
+}
+
+.mtech-input-icon-right {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: color var(--transition-normal);
+}
+
+.mtech-input-icon-right:hover {
+    color: var(--primary-color);
+}
+
+/* === Range Slider === */
+.mtech-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    transition: all var(--transition-normal);
+}
+
+.mtech-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    cursor: pointer;
+    box-shadow: 0 2px 8px var(--glow-color, rgba(255, 152, 0, 0.3));
+    transition: all var(--transition-normal);
+}
+
+.mtech-range::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 15px var(--glow-color, rgba(255, 152, 0, 0.4));
+}
+
+.mtech-range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 8px var(--glow-color, rgba(255, 152, 0, 0.3));
+    transition: all var(--transition-normal);
+}
+
+.mtech-range::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 15px var(--glow-color, rgba(255, 152, 0, 0.4));
+}
+
+/* === Range Container === */
+.mtech-range-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.mtech-range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.mtech-range-value {
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+/* === File Input === */
+.mtech-file-input {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+}
+
+.mtech-file-input input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.mtech-file-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: 40px 20px;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all var(--transition-normal);
+    text-align: center;
+    cursor: pointer;
+}
+
+.mtech-file-label:hover {
+    border-color: var(--border-hover);
+    background: var(--mtech-form-bg-light, rgba(255, 152, 0, 0.05));
+    color: var(--primary-color);
+}
+
+.mtech-file-input.dragover .mtech-file-label {
+    border-color: var(--primary-color);
+    background: rgba(255, 152, 0, 0.1);
+    color: var(--primary-color);
+    transform: scale(1.02);
+}
+
+.mtech-file-info {
+    margin-top: var(--spacing-sm);
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.mtech-file-selected {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* === Search Input === */
+.mtech-search {
+    position: relative;
+}
+
+.mtech-search .mtech-input {
+    padding-left: 44px;
+    padding-right: 44px;
+}
+
+.mtech-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    pointer-events: none;
+}
+
+.mtech-search-clear {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 50%;
+    transition: all var(--transition-normal);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mtech-search.has-value .mtech-search-clear {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mtech-search-clear:hover {
+    color: var(--error-color);
+    background: rgba(244, 67, 54, 0.1);
+}
+
+/* === Form Validation === */
+.mtech-form-error {
+    font-size: 0.875rem;
+    color: var(--error-color);
+    margin-top: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.mtech-form-success {
+    font-size: 0.875rem;
+    color: var(--success-color);
+    margin-top: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.mtech-form-help {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-top: var(--spacing-xs);
+    line-height: 1.4;
+}
+
+/* === Form Actions === */
+.mtech-form-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+    margin-top: var(--spacing-lg);
+}
+
+.mtech-form-actions.center {
+    justify-content: center;
+}
+
+.mtech-form-actions.start {
+    justify-content: flex-start;
+}
+
+.mtech-form-actions.between {
+    justify-content: space-between;
+}
+
+/* === Floating Labels === */
+.mtech-floating-label {
+    position: relative;
+}
+
+.mtech-floating-label .mtech-input {
+    padding-top: 20px;
+    padding-bottom: 8px;
+}
+
+.mtech-floating-label .mtech-form-label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all var(--transition-normal);
+    pointer-events: none;
+    background: transparent;
+    margin-bottom: 0;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.mtech-floating-label .mtech-input:focus + .mtech-form-label,
+.mtech-floating-label .mtech-input:not(:placeholder-shown) + .mtech-form-label {
+    top: 8px;
+    font-size: 0.75rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    transform: translateY(0);
+}
+
+/* === Multi-step Form === */
+.mtech-form-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-2xl);
+    position: relative;
+}
+
+.mtech-form-steps::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--border-color);
+    z-index: 1;
+}
+
+.mtech-form-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    position: relative;
+    z-index: 2;
+    background: var(--background-dark);
+    padding: 0 var(--spacing-sm);
+}
+
+.mtech-form-step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--border-color);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    transition: all var(--transition-normal);
+}
+
+.mtech-form-step.active .mtech-form-step-number {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: #000000;
+}
+
+.mtech-form-step.completed .mtech-form-step-number {
+    background: var(--success-color);
+    color: #ffffff;
+}
+
+.mtech-form-step-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-align: center;
+}
+
+.mtech-form-step.active .mtech-form-step-label {
+    color: var(--primary-color);
+}
+
+.mtech-form-step.completed .mtech-form-step-label {
+    color: var(--success-color);
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    .mtech-form-row {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+    
+    .mtech-form-actions {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .mtech-form-actions .mtech-btn {
+        width: 100%;
+    }
+    
+    .mtech-input-group {
+        flex-direction: column;
+    }
+    
+    .mtech-input-group .mtech-input,
+    .mtech-input-addon {
+        border-radius: var(--radius-md);
+        border: 2px solid var(--border-color);
+    }
+    
+    .mtech-form-steps {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+    
+    .mtech-form-steps::before {
+        display: none;
+    }
+    
+    .mtech-form-step {
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .mtech-input,
+    .mtech-textarea,
+    .mtech-select {
+        padding: 10px 14px;
+        font-size: 0.95rem;
+    }
+    
+    .mtech-input-sm {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .mtech-input-lg {
+        padding: 14px 18px;
+        font-size: 1.05rem;
+    }
+    
+    .mtech-file-label {
+        padding: 30px 15px;
+    }
+    
+    .mtech-floating-label .mtech-input {
+        padding-top: 18px;
+        padding-bottom: 6px;
+    }
+}

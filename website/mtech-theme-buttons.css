@@ -1,0 +1,578 @@
+/**
+ * MTech Components - MTechWare Theme Part 2
+ * Buttons and Interactive Elements
+ * Matching MTechWare.github.io design language
+ */
+
+/* === PART 2: Buttons and Interactive Elements === */
+
+/* === Base Button Styles === */
+.mtech-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: 14px 28px;
+    border: none;
+    border-radius: var(--radius-full);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all var(--transition-cubic);
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    outline: none;
+    min-width: 120px;
+}
+
+.mtech-btn:focus-visible {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 2px;
+}
+
+.mtech-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.mtech-btn i {
+    font-size: 1.1em;
+    transition: transform var(--transition-normal);
+}
+
+.mtech-btn:hover i {
+    transform: scale(1.1);
+}
+
+/* === Primary Button === */
+.mtech-btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: #000000;
+    font-weight: 700;
+    box-shadow: 
+        0 8px 25px rgba(255, 152, 0, 0.3),
+        0 0 0 1px rgba(255, 152, 0, 0.1);
+}
+
+.mtech-btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    border-radius: var(--radius-full);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.mtech-btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 15px 35px rgba(255, 152, 0, 0.4),
+        0 0 20px rgba(255, 152, 0, 0.2);
+}
+
+.mtech-btn-primary:hover::before {
+    opacity: 1;
+}
+
+.mtech-btn-primary:active {
+    transform: translateY(-1px) scale(1.02);
+    transition-duration: 0.1s;
+}
+
+/* === Secondary Button === */
+.mtech-btn-secondary {
+    background: rgba(255, 152, 0, 0.1);
+    color: var(--primary-color);
+    border: 2px solid rgba(255, 152, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.mtech-btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 87, 34, 0.2));
+    border-radius: var(--radius-full);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.mtech-btn-secondary:hover {
+    background: rgba(255, 152, 0, 0.2);
+    border-color: rgba(255, 152, 0, 0.5);
+    color: var(--primary-light);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(255, 152, 0, 0.2);
+}
+
+.mtech-btn-secondary:hover::before {
+    opacity: 1;
+}
+
+/* === Ghost Button === */
+.mtech-btn-ghost {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(5px);
+}
+
+.mtech-btn-ghost:hover {
+    background: rgba(255, 152, 0, 0.1);
+    border-color: var(--border-hover);
+    color: var(--primary-color);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.1);
+}
+
+/* === Success Button === */
+.mtech-btn-success {
+    background: linear-gradient(135deg, var(--success-color) 0%, #388e3c 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+}
+
+.mtech-btn-success:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(76, 175, 80, 0.4);
+}
+
+/* === Error Button === */
+.mtech-btn-error {
+    background: linear-gradient(135deg, var(--error-color) 0%, #d32f2f 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(244, 67, 54, 0.3);
+}
+
+.mtech-btn-error:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(244, 67, 54, 0.4);
+}
+
+/* === Warning Button === */
+.mtech-btn-warning {
+    background: linear-gradient(135deg, var(--warning-color) 0%, #f57c00 100%);
+    color: #000000;
+    box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);
+}
+
+.mtech-btn-warning:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(255, 152, 0, 0.4);
+}
+
+/* === Button Sizes === */
+.mtech-btn-sm {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    min-width: 80px;
+}
+
+.mtech-btn-lg {
+    padding: 18px 36px;
+    font-size: 1.125rem;
+    min-width: 160px;
+}
+
+.mtech-btn-xl {
+    padding: 22px 44px;
+    font-size: 1.25rem;
+    min-width: 200px;
+}
+
+/* === Button Groups === */
+.mtech-btn-group {
+    display: inline-flex;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.mtech-btn-group .mtech-btn {
+    border-radius: 0;
+    border-right: 1px solid rgba(255, 152, 0, 0.2);
+}
+
+.mtech-btn-group .mtech-btn:first-child {
+    border-radius: var(--radius-full) 0 0 var(--radius-full);
+}
+
+.mtech-btn-group .mtech-btn:last-child {
+    border-radius: 0 var(--radius-full) var(--radius-full) 0;
+    border-right: none;
+}
+
+.mtech-btn-group .mtech-btn:only-child {
+    border-radius: var(--radius-full);
+    border-right: none;
+}
+
+/* === Pulse Effect === */
+.mtech-btn-pulse {
+    animation: mtech-btn-pulse 2s infinite ease-in-out;
+}
+
+@keyframes mtech-btn-pulse {
+    0%, 100% {
+        box-shadow: 
+            0 8px 25px rgba(255, 152, 0, 0.3),
+            0 0 0 0 rgba(255, 152, 0, 0.4);
+    }
+    50% {
+        box-shadow: 
+            0 8px 25px rgba(255, 152, 0, 0.3),
+            0 0 0 10px rgba(255, 152, 0, 0);
+    }
+}
+
+/* === Loading State === */
+.mtech-btn-loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+}
+
+.mtech-btn-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: mtech-spin 1s linear infinite;
+}
+
+@keyframes mtech-spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* === Icon Buttons === */
+.mtech-btn-icon {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    min-width: auto;
+}
+
+.mtech-btn-icon-sm {
+    width: 36px;
+    height: 36px;
+}
+
+.mtech-btn-icon-lg {
+    width: 56px;
+    height: 56px;
+}
+
+/* === Floating Action Button === */
+.mtech-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    box-shadow: 
+        0 8px 25px rgba(255, 152, 0, 0.3),
+        0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all var(--transition-cubic);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.mtech-fab:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 
+        0 12px 35px rgba(255, 152, 0, 0.4),
+        0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* === Toggle Buttons === */
+.mtech-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 32px;
+}
+
+.mtech-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.mtech-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-normal);
+    border-radius: 32px;
+    backdrop-filter: blur(10px);
+}
+
+.mtech-toggle-slider::before {
+    position: absolute;
+    content: '';
+    height: 24px;
+    width: 24px;
+    left: 3px;
+    bottom: 3px;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    transition: all var(--transition-normal);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mtech-toggle input:checked + .mtech-toggle-slider {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border-color: var(--primary-color);
+}
+
+.mtech-toggle input:checked + .mtech-toggle-slider::before {
+    transform: translateX(28px);
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+}
+
+.mtech-toggle:hover .mtech-toggle-slider {
+    border-color: var(--border-hover);
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.2);
+}
+
+/* === Checkbox Styles === */
+.mtech-checkbox {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    user-select: none;
+}
+
+.mtech-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.mtech-checkbox-mark {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-normal);
+    backdrop-filter: blur(10px);
+}
+
+.mtech-checkbox-mark::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 10px;
+    border: solid #000000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.mtech-checkbox input:checked ~ .mtech-checkbox-mark {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border-color: var(--primary-color);
+}
+
+.mtech-checkbox input:checked ~ .mtech-checkbox-mark::after {
+    display: block;
+}
+
+.mtech-checkbox:hover .mtech-checkbox-mark {
+    border-color: var(--border-hover);
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.2);
+}
+
+/* === Radio Button Styles === */
+.mtech-radio {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    user-select: none;
+}
+
+.mtech-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.mtech-radio-mark {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    transition: all var(--transition-normal);
+    backdrop-filter: blur(10px);
+}
+
+.mtech-radio-mark::after {
+    content: '';
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #000000;
+}
+
+.mtech-radio input:checked ~ .mtech-radio-mark {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border-color: var(--primary-color);
+}
+
+.mtech-radio input:checked ~ .mtech-radio-mark::after {
+    display: block;
+}
+
+.mtech-radio:hover .mtech-radio-mark {
+    border-color: var(--border-hover);
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.2);
+}
+
+/* === Button Container === */
+.mtech-btn-container {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.mtech-btn-container-center {
+    justify-content: center;
+}
+
+.mtech-btn-container-start {
+    justify-content: flex-start;
+}
+
+.mtech-btn-container-end {
+    justify-content: flex-end;
+}
+
+.mtech-btn-container-between {
+    justify-content: space-between;
+}
+
+/* === Responsive Button Styles === */
+@media (max-width: 768px) {
+    .mtech-btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+        min-width: 100px;
+    }
+    
+    .mtech-btn-sm {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        min-width: 70px;
+    }
+    
+    .mtech-btn-lg {
+        padding: 16px 32px;
+        font-size: 1.05rem;
+        min-width: 140px;
+    }
+    
+    .mtech-btn-xl {
+        padding: 20px 40px;
+        font-size: 1.15rem;
+        min-width: 180px;
+    }
+    
+    .mtech-btn-container {
+        gap: var(--spacing-sm);
+    }
+    
+    .mtech-fab {
+        bottom: 16px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mtech-btn-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .mtech-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .mtech-btn-group {
+        flex-direction: column;
+        border-radius: var(--radius-md);
+    }
+    
+    .mtech-btn-group .mtech-btn {
+        border-radius: 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 152, 0, 0.2);
+    }
+    
+    .mtech-btn-group .mtech-btn:first-child {
+        border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+    
+    .mtech-btn-group .mtech-btn:last-child {
+        border-radius: 0 0 var(--radius-md) var(--radius-md);
+        border-bottom: none;
+    }
+}

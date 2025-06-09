@@ -1,0 +1,781 @@
+/**
+ * MTech Components - MTechWare Theme Part 1
+ * Inspired by MTechWare.github.io design language
+ * Dark theme with orange accents and glassmorphism effects
+ */
+
+/* === PART 1: Core Variables and Base Styles === */
+
+:root {
+    /* Primary Color Palette - Matching MTechWare.github.io */
+    --primary-color: var(--primary-color);
+    --primary-dark: #ff5722;
+    --primary-light: #ffb74d;
+    --primary-rgb: 255, 152, 0;
+    
+    /* Background Colors */
+    --background-dark: #0a0a0a;
+    --background-light: #1a1a1a;
+    --background-card: #0f0f0f;
+    --background-glass: rgba(15, 15, 15, 0.8);
+    --background-modal: rgba(10, 10, 10, 0.95);
+    
+    /* Text Colors */
+    --text-primary: #e8e8e8;
+    --text-secondary: #b0b0b0;
+    --text-muted: #888888;
+    --text-white: #ffffff;
+    
+    /* Border and Effects */
+    --border-color: rgba(255, 152, 0, 0.15);
+    --border-hover: rgba(255, 152, 0, 0.3);
+    --glow-color: rgba(255, 152, 0, 0.4);
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.2);
+    --shadow-heavy: rgba(0, 0, 0, 0.3);
+    
+    /* Status Colors */
+    --success-color: #4caf50;
+    --error-color: #f44336;
+    --warning-color: var(--primary-color);
+    --info-color: #2196f3;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --transition-cubic: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'Roboto Mono', 'Fira Code', 'Courier New', monospace;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 50px;
+}
+
+/* === Global Resets and Base Styles === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 50%, var(--background-card) 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Background Pattern Effects === */
+.mtech-bg-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 25% 25%, var(--mtech-bg-orange, rgba(255, 152, 0, 0.1)) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, var(--mtech-bg-orange2, rgba(255, 120, 20, 0.08)) 0%, transparent 50%);
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* === Particle System === */
+.mtech-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.mtech-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--mtech-particle-bg, rgba(255, 152, 0, 0.3));
+    border-radius: 50%;
+    animation: mtech-particle-float 8s linear infinite;
+}
+
+@keyframes mtech-particle-float {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) translateX(100px);
+        opacity: 0;
+    }
+}
+
+/* === NavBar (from mtechware.github.io) === */
+.mtech-header {
+    position: fixed;
+    top: 24px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 92%;
+    max-width: 1200px;
+    z-index: 9999;
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 12px 24px;
+    backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3), 0 0 15px var(--glow-color, rgba(255, 152, 0, 0.1));
+}
+.mtech-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.nav-logo-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: #000;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 12px var(--glow-color, rgba(255, 152, 0, 0.3));
+}
+.nav-logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.nav-logo-text .brand-name {
+    font-weight: 800;
+    font-size: 1.25rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+.nav-logo-text .brand-tagline {
+    font-size: 0.7rem;
+    color: #888;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Roboto Mono', monospace;
+}
+.nav-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 16px;
+}
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    background: #4caf50;
+    border-radius: 50%;
+    animation: pulse-status 2s infinite;
+}
+.status-text {
+    font-size: 0.65rem;
+    color: #4caf50;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Roboto Mono', monospace;
+}
+@keyframes pulse-status {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.2); }
+}
+.nav-main-container {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+nav ul.main-nav {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    background: var(--mtech-mainnav-bg, rgba(255, 152, 0, 0.05));
+    border-radius: 12px;
+    padding: 6px;
+}
+nav ul.main-nav > li {
+    position: relative;
+}
+nav ul.main-nav a {
+    color: #d0d0d0;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 10px 16px;
+    border-radius: 8px;
+    display: block;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+nav ul.main-nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--glow-color, rgba(255, 152, 0, 0.15)), var(--primary-dark-rgba, rgba(255, 87, 34, 0.15)));
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+nav ul.main-nav > li > a:hover,
+nav ul.main-nav > li > a.active {
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--glow-color, rgba(255, 152, 0, 0.2)), var(--primary-dark-rgba, rgba(255, 87, 34, 0.2)));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.2);
+}
+nav ul.main-nav > li > a:hover::before,
+nav ul.main-nav > li > a.active::before {
+    opacity: 1;
+}
+nav ul.main-nav > li > a.active {
+    background: linear-gradient(135deg, var(--glow-color, rgba(255, 152, 0, 0.25)), var(--primary-dark-rgba, rgba(255, 87, 34, 0.25)));
+    color: #ff9800;
+    font-weight: 700;
+}
+nav ul.mobile-nav {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+.menu-toggle {
+    display: none;
+    color: #e8e8e8;
+    font-size: 1.1rem;
+    background: var(--mtech-mainnav-active-bg, rgba(255, 152, 0, 0.1));
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+.menu-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 87, 34, 0.2));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+.menu-toggle:hover {
+    color: #ff9800;
+    background: rgba(255, 152, 0, 0.15);
+    border-color: rgba(255, 152, 0, 0.4);
+    transform: scale(1.05);
+}
+.menu-toggle:hover::before {
+    opacity: 1;
+}
+.menu-toggle:active {
+    transform: scale(0.95);
+}
+@media (max-width: 768px) {
+    .mtech-header {
+         top: 0; left: 0; right: 0; width: 100%;
+         max-width: none; border-radius: 0; border-left: none; border-right: none; border-top: none;
+         padding: 10px 18px;
+    }
+    .nav-logo-text .brand-name { font-size: 1.1rem; }
+    .nav-logo-text .brand-tagline { font-size: 0.6rem; }
+    .nav-logo-icon { width: 32px; height: 32px; font-size: 0.95rem; }
+    .nav-status { margin-left: 15px; }
+    .status-text { display: none; }
+    nav ul.main-nav { display: none; }
+    .nav-main-container { gap: 15px; }
+    .menu-toggle { display: block; }
+    nav ul.mobile-nav.active {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 20px 0;
+        text-align: center;
+        gap: 0;
+        border: 1px solid rgba(255, 152, 0, 0.2);
+        border-top: none;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        z-index: 9998;
+    }
+    nav ul.mobile-nav.active li { width: 100%; }
+    nav ul.mobile-nav.active a {
+        display: block;
+        padding: 16px 30px;
+        color: #d0d0d0;
+        font-size: 1rem;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(255, 152, 0, 0.1);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    nav ul.mobile-nav.active a::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    nav ul.mobile-nav.active li:last-child a { border-bottom: none; }
+    nav ul.mobile-nav.active a:hover,
+    nav ul.mobile-nav.active a.active {
+        background: rgba(255, 152, 0, 0.1);
+        color: #ff9800;
+    }
+    nav ul.mobile-nav.active a:hover::before,
+    nav ul.mobile-nav.active a.active::before {
+        opacity: 1;
+    }
+}
+
+/* === Glass Card Base === */
+.mtech-glass-card {
+    position: relative;
+    border: 1px solid var(--border-color);
+    background: var(--background-glass);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-cubic);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.mtech-glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--glow-color, rgba(255, 152, 0, 0.05)) 0%, transparent 50%);
+    border-radius: var(--radius-lg);
+    z-index: -1;
+    transition: opacity var(--transition-normal);
+    opacity: 0;
+}
+
+.mtech-glass-card:hover {
+    border-color: var(--border-hover);
+    background: rgba(20, 20, 20, 0.9);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 
+        0 20px 40px var(--shadow-heavy),
+        0 0 20px rgba(255, 152, 0, 0.1);
+}
+
+.mtech-glass-card:hover::before {
+    opacity: 1;
+}
+
+/* === Typography === */
+.mtech-title {
+    font-weight: 800;
+    color: var(--text-white);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+}
+
+.mtech-title-xl {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.mtech-title-lg {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+}
+
+.mtech-title-md {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.mtech-title-sm {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+}
+
+.mtech-highlight {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+.mtech-glow {
+    text-shadow: 
+        0 0 8px var(--glow-color, rgba(255, 152, 0, 0.8)),
+        0 0 16px var(--glow-color, rgba(255, 152, 0, 0.4));
+}
+
+.mtech-text-mono {
+    font-family: var(--font-mono);
+}
+
+.mtech-text-primary {
+    color: var(--text-primary);
+}
+
+.mtech-text-secondary {
+    color: var(--text-secondary);
+}
+
+.mtech-text-muted {
+    color: var(--text-muted);
+}
+
+/* === Utility Classes === */
+.mtech-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+}
+
+.mtech-section {
+    padding: var(--spacing-2xl) 0;
+    position: relative;
+    z-index: 1;
+}
+
+.mtech-grid {
+    display: grid;
+    gap: var(--spacing-xl);
+}
+
+.mtech-grid-1 {
+    grid-template-columns: 1fr;
+}
+
+.mtech-grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.mtech-grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.mtech-flex {
+    display: flex;
+}
+
+.mtech-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mtech-flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mtech-flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.mtech-gap-sm {
+    gap: var(--spacing-sm);
+}
+
+.mtech-gap-md {
+    gap: var(--spacing-md);
+}
+
+.mtech-gap-lg {
+    gap: var(--spacing-lg);
+}
+
+.mtech-gap-xl {
+    gap: var(--spacing-xl);
+}
+
+/* === Spacing Utilities === */
+.mtech-p-sm { padding: var(--spacing-sm); }
+.mtech-p-md { padding: var(--spacing-md); }
+.mtech-p-lg { padding: var(--spacing-lg); }
+.mtech-p-xl { padding: var(--spacing-xl); }
+.mtech-p-2xl { padding: var(--spacing-2xl); }
+
+.mtech-m-sm { margin: var(--spacing-sm); }
+.mtech-m-md { margin: var(--spacing-md); }
+.mtech-m-lg { margin: var(--spacing-lg); }
+.mtech-m-xl { margin: var(--spacing-xl); }
+.mtech-m-2xl { margin: var(--spacing-2xl); }
+
+.mtech-mb-sm { margin-bottom: var(--spacing-sm); }
+.mtech-mb-md { margin-bottom: var(--spacing-md); }
+.mtech-mb-lg { margin-bottom: var(--spacing-lg); }
+.mtech-mb-xl { margin-bottom: var(--spacing-xl); }
+.mtech-mb-2xl { margin-bottom: var(--spacing-2xl); }
+
+.mtech-mt-sm { margin-top: var(--spacing-sm); }
+.mtech-mt-md { margin-top: var(--spacing-md); }
+.mtech-mt-lg { margin-top: var(--spacing-lg); }
+.mtech-mt-xl { margin-top: var(--spacing-xl); }
+.mtech-mt-2xl { margin-top: var(--spacing-2xl); }
+
+/* === Animation Utilities === */
+.mtech-fade-in {
+    animation: mtech-fade-in 0.6s ease-out;
+}
+
+.mtech-slide-up {
+    animation: mtech-slide-up 0.6s ease-out;
+}
+
+.mtech-float {
+    animation: mtech-float 6s ease-in-out infinite;
+}
+
+.mtech-pulse {
+    animation: mtech-pulse 2s ease-in-out infinite;
+}
+
+@keyframes mtech-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes mtech-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes mtech-float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes mtech-pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+/* === Performance Optimizations === */
+.mtech-gpu-accelerated {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+.mtech-contain-layout {
+    contain: layout style paint;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    :root {
+        --spacing-xs: 0.2rem;
+        --spacing-sm: 0.4rem;
+        --spacing-md: 0.8rem;
+        --spacing-lg: 1.2rem;
+        --spacing-xl: 1.6rem;
+        --spacing-2xl: 2.4rem;
+    }
+    
+    .mtech-container {
+        width: 95%;
+        padding: 0 var(--spacing-md);
+    }
+    
+    .mtech-section {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .mtech-grid {
+        gap: var(--spacing-lg);
+    }
+    
+    .mtech-grid-2,
+    .mtech-grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .mtech-container {
+        width: 100%;
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .mtech-grid {
+        gap: var(--spacing-md);
+    }
+}
+
+/* === Dark Mode Support === */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+    }
+}
+
+/* === Reduced Motion Support === */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .mtech-float,
+    .mtech-pulse,
+    .mtech-particle {
+        animation: none !important;
+    }
+}
+
+/* === High Contrast Mode Support === */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: rgba(255, 152, 0, 0.5);
+        --border-hover: rgba(255, 152, 0, 0.8);
+        --text-secondary: #cccccc;
+    }
+}
+
+/* === Official Theme Classes === */
+:root.theme-orange {
+    --primary-color: #ff9800;
+    --primary-dark: #ff5722;
+    --primary-light: #ffd180;
+    --success-color: #4caf50;
+    --border-color: #ffb74d;
+    --background-modal: #232323ee;
+}
+
+/* Official: Green Theme */
+:root.theme-green {
+    --primary-color: #43a047;
+    --primary-dark: #2e7031;
+    --primary-light: #a5d6a7;
+    --primary-rgb: 67, 160, 71;
+    --primary-dark-rgba: rgba(46, 112, 49, 0.15);
+    --success-color: #388e3c;
+    --border-color: #81c784;
+    --border-hover: rgba(67, 160, 71, 0.4);
+    --glow-color: rgba(67, 160, 71, 0.4);
+    --mtech-bg-orange: rgba(67, 160, 71, 0.1);
+    --mtech-bg-orange2: rgba(67, 160, 71, 0.08);
+    --mtech-particle-bg: rgba(67, 160, 71, 0.3);
+    --mtech-mainnav-bg: rgba(67, 160, 71, 0.05);
+    --mtech-mainnav-active-bg: rgba(67, 160, 71, 0.1);
+    --mtech-btn-secondary-bg: rgba(67, 160, 71, 0.1);
+    --mtech-btn-secondary-hover-bg: rgba(67, 160, 71, 0.2);
+    --mtech-btn-ghost-hover-bg: rgba(67, 160, 71, 0.1);
+    --mtech-form-bg: rgba(67, 160, 71, 0.1);
+    --mtech-form-bg-light: rgba(67, 160, 71, 0.05);
+    --mtech-modal-close-hover-bg: rgba(67, 160, 71, 0.1);
+    --mtech-dropdown-item-hover-bg: rgba(67, 160, 71, 0.1);
+    --mtech-dropdown-item-active-bg: rgba(67, 160, 71, 0.15);
+    --mtech-nav-link-hover-bg: rgba(67, 160, 71, 0.1);
+    --mtech-nav-link-active-bg: rgba(67, 160, 71, 0.15);
+    --mtech-alert-warning-bg: rgba(67, 160, 71, 0.1);
+    --background-modal: #232323ee;
+}
+
+:root.theme-green body {
+    }
