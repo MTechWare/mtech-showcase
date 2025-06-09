@@ -1,4 +1,4 @@
-# MTech Electron Component Showcase
+# MTech Component Showcase
 
 A comprehensive showcase of versatile UI components designed for any Electron application. While originally created for system utilities, these components are highly adaptable for media players, code editors, chat applications, business software, and more. This showcase provides templates, code examples, and interactive demonstrations of all the key components used in modern desktop applications.
 
