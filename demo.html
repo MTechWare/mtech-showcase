@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTech Components - Optimized Demo</title>
+    <link rel="stylesheet" href="styles-optimized.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: var(--background-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .demo-section h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .demo-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .performance-metrics {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 12px;
+            z-index: 1000;
+            min-width: 200px;
+        }
+        
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .metric-value {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .code-example {
+            background: var(--background-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+            position: relative;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .lazy-component {
+            min-height: 100px;
+            background: var(--background-light);
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>MTech Components - Optimized Performance Demo</h1>
+        <p>This demo showcases the performance-optimized version of MTech Components with improved memory management, event delegation, and animation performance.</p>
+        
+        <!-- Performance Metrics Display -->
+        <div class="performance-metrics" id="performance-metrics">
+            <h4 style="margin-top: 0;">Performance Metrics</h4>
+            <div class="metric-item">
+                <span>FPS:</span>
+                <span class="metric-value" id="fps-value">--</span>
+            </div>
+            <div class="metric-item">
+                <span>Memory:</span>
+                <span class="metric-value" id="memory-value">--</span>
+            </div>
+            <div class="metric-item">
+                <span>Components:</span>
+                <span class="metric-value" id="components-value">--</span>
+            </div>
+            <div class="metric-item">
+                <span>Events:</span>
+                <span class="metric-value" id="events-value">--</span>
+            </div>
+        </div>
+
+        <!-- Buttons Demo -->
+        <div class="demo-section">
+            <h2><i class="fas fa-mouse-pointer"></i> Optimized Buttons</h2>
+            <p>Buttons with hardware-accelerated hover effects and optimized event handling.</p>
+            
+            <div class="demo-buttons">
+                <button class="btn" onclick="showOptimizedNotification('info', 'Primary button clicked!')">
+                    <i class="fas fa-star"></i> Primary
+                </button>
+                <button class="btn btn-secondary" onclick="showOptimizedNotification('info', 'Secondary button clicked!')">
+                    <i class="fas fa-cog"></i> Secondary
+                </button>
+                <button class="btn btn-success" onclick="showOptimizedNotification('success', 'Success button clicked!')">
+                    <i class="fas fa-check"></i> Success
+                </button>
+                <button class="btn btn-error" onclick="showOptimizedNotification('error', 'Error button clicked!')">
+                    <i class="fas fa-times"></i> Error
+                </button>
+                <button class="btn btn-warning" onclick="showOptimizedNotification('warning', 'Warning button clicked!')">
+                    <i class="fas fa-exclamation"></i> Warning
+                </button>
+            </div>
+
+            <div class="code-example">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <pre><code>// Optimized button creation
+const button = await mtech.createButton({
+    text: 'Click Me',
+    type: 'primary',
+    icon: 'fas fa-star',
+    onClick: () => console.log('Clicked!')
+});</code></pre>
+            </div>
+        </div>
+
+        <!-- Modal Demo -->
+        <div class="demo-section">
+            <h2><i class="fas fa-window-maximize"></i> Optimized Modals</h2>
+            <p>Modals with GPU-accelerated animations and efficient event delegation.</p>
+            
+            <div class="demo-buttons">
+                <button class="btn" onclick="showOptimizedModal('info')">
+                    <i class="fas fa-info-circle"></i> Info Modal
+                </button>
+                <button class="btn btn-warning" onclick="showOptimizedModal('confirm')">
+                    <i class="fas fa-question-circle"></i> Confirm Modal
+                </button>
+                <button class="btn btn-secondary" onclick="showOptimizedModal('form')">
+                    <i class="fas fa-edit"></i> Form Modal
+                </button>
+            </div>
+
+            <div class="code-example">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <pre><code>// Optimized modal creation
+const modal = await mtech.createModal({
+    id: 'my-modal',
+    title: 'Optimized Modal',
+    content: 'This modal uses hardware acceleration',
+    buttons: [{ text: 'Close', action: 'close' }]
+});</code></pre>
+            </div>
+        </div>
+
+        <!-- Cards Demo -->
+        <div class="demo-section">
+            <h2><i class="fas fa-th-large"></i> Optimized Cards</h2>
+            <p>Cards with optimized hover effects and CSS containment for better performance.</p>
+            
+            <div class="demo-grid">
+                <div class="overview-card" onclick="showOptimizedNotification('info', 'Performance card clicked!')">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h4>Performance</h4>
+                    <p>60 FPS</p>
+                </div>
+                <div class="overview-card" onclick="showOptimizedNotification('info', 'Memory card clicked!')">
+                    <i class="fas fa-memory"></i>
+                    <h4>Memory Usage</h4>
+                    <p>45 MB</p>
+                </div>
+                <div class="overview-card" onclick="showOptimizedNotification('info', 'Components card clicked!')">
+                    <i class="fas fa-cubes"></i>
+                    <h4>Components</h4>
+                    <p>12 Active</p>
+                </div>
+                <div class="overview-card" onclick="showOptimizedNotification('info', 'Events card clicked!')">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Events</h4>
+                    <p>8 Handlers</p>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <pre><code>// Optimized card creation
+const card = await mtech.createCard({
+    title: 'Performance',
+    value: '60 FPS',
+    icon: 'fas fa-tachometer-alt',
+    onClick: () => console.log('Card clicked!')
+});</code></pre>
+            </div>
+        </div>
+
+        <!-- Lazy Loading Demo -->
+        <div class="demo-section">
+            <h2><i class="fas fa-hourglass-half"></i> Lazy Loading Components</h2>
+            <p>Components that load only when they become visible, improving initial page load performance.</p>
+            
+            <div class="demo-grid">
+                <div class="lazy-component" data-component="chart" data-lazy data-config-type="bar">
+                    <i class="fas fa-spinner fa-spin"></i> Loading Chart Component...
+                </div>
+                <div class="lazy-component" data-component="table" data-lazy data-config-rows="100">
+                    <i class="fas fa-spinner fa-spin"></i> Loading Table Component...
+                </div>
+                <div class="lazy-component" data-component="calendar" data-lazy>
+                    <i class="fas fa-spinner fa-spin"></i> Loading Calendar Component...
+                </div>
+            </div>
+
+            <div class="code-example">
+                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                <pre><code>// Lazy loading component
+&lt;div data-component="chart" 
+     data-lazy 
+     data-config-type="bar"&gt;
+    Loading...
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- Performance Test -->
+        <div class="demo-section">
+            <h2><i class="fas fa-rocket"></i> Performance Tests</h2>
+            <p>Test the performance optimizations with stress tests.</p>
+            
+            <div class="demo-buttons">
+                <button class="btn" onclick="stressTestButtons()">
+                    <i class="fas fa-play"></i> Stress Test Buttons (100)
+                </button>
+                <button class="btn btn-warning" onclick="stressTestNotifications()">
+                    <i class="fas fa-bell"></i> Stress Test Notifications (20)
+                </button>
+                <button class="btn btn-secondary" onclick="stressTestAnimations()">
+                    <i class="fas fa-magic"></i> Stress Test Animations (50)
+                </button>
+                <button class="btn btn-error" onclick="clearStressTests()">
+                    <i class="fas fa-trash"></i> Clear All
+                </button>
+            </div>
+
+            <div id="stress-test-container" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Information</h3>
+                <button class="modal-close" onclick="closeModal('info-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>This is an optimized modal with hardware-accelerated animations and efficient event handling.</p>
+                <p>Performance features:</p>
+                <ul>
+                    <li>GPU-accelerated transforms</li>
+                    <li>Event delegation</li>
+                    <li>CSS containment</li>
+                    <li>Optimized rendering</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('info-modal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Action</h3>
+                <button class="modal-close" onclick="closeModal('confirm-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to perform this action? This modal demonstrates optimized confirmation dialogs.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('confirm-modal')">Cancel</button>
+                <button class="btn btn-error" onclick="confirmAction()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="form-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Optimized Form</h3>
+                <button class="modal-close" onclick="closeModal('form-modal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="demo-form">
+                    <div style="margin-bottom: 16px;">
+                        <label style="display: block; margin-bottom: 4px;">Name:</label>
+                        <input type="text" class="demo-form-input" placeholder="Enter your name" required>
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <label style="display: block; margin-bottom: 4px;">Email:</label>
+                        <input type="email" class="demo-form-input" placeholder="Enter your email" required>
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <label style="display: block; margin-bottom: 4px;">Message:</label>
+                        <textarea class="demo-form-textarea" rows="4" placeholder="Enter your message"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('form-modal')">Cancel</button>
+                <button class="btn" onclick="submitForm()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load optimized components -->
+    <script src="core/EventManager.js"></script>
+    <script src="core/DOMManager.js"></script>
+    <script src="core/PerformanceManager.js"></script>
+    <script src="core/ComponentManager.js"></script>
+    <script src="MTechComponentsOptimized.js"></script>
+
+    <script>
+        // Initialize optimized MTech Components
+        let mtech;
+        
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                mtech = new MTechComponentsOptimized({
+                    enablePerformanceMonitoring: true,
+                    enableComponentPooling: true,
+                    debounceDelay: 200
+                });
+                
+                await mtech.init();
+                
+                // Start performance monitoring display
+                startPerformanceMonitoring();
+                
+                console.log('MTech Components Optimized Demo initialized');
+            } catch (error) {
+                console.error('Failed to initialize demo:', error);
+            }
+        });
+
+        // Performance monitoring display
+        function startPerformanceMonitoring() {
+            setInterval(() => {
+                if (mtech) {
+                    const metrics = mtech.getPerformanceMetrics();
+                    updatePerformanceDisplay(metrics);
+                }
+            }, 1000);
+        }
+
+        function updatePerformanceDisplay(metrics) {
+            const fpsEl = document.getElementById('fps-value');
+            const memoryEl = document.getElementById('memory-value');
+            const componentsEl = document.getElementById('components-value');
+            const eventsEl = document.getElementById('events-value');
+
+            if (metrics.performance) {
+                fpsEl.textContent = metrics.performance.fps || '--';
+                
+                if (metrics.performance.memoryUsage) {
+                    const mb = (metrics.performance.memoryUsage.used / 1024 / 1024).toFixed(1);
+                    memoryEl.textContent = `${mb} MB`;
+                }
+            }
+
+            if (metrics.components) {
+                componentsEl.textContent = metrics.components.activeInstances || 0;
+            }
+
+            if (metrics.events) {
+                eventsEl.textContent = metrics.events.totalHandlers || 0;
+            }
+        }
+
+        // Demo functions
+        function showOptimizedNotification(type, message) {
+            if (mtech) {
+                mtech.showNotification({ type, message });
+            }
+        }
+
+        function showOptimizedModal(type) {
+            const modalId = `${type}-modal`;
+            if (mtech) {
+                mtech.showModal(modalId);
+            }
+        }
+
+        function closeModal(modalId) {
+            if (mtech) {
+                mtech.closeModal(modalId);
+            }
+        }
+
+        function confirmAction() {
+            showOptimizedNotification('success', 'Action confirmed!');
+            closeModal('confirm-modal');
+        }
+
+        function submitForm() {
+            const form = document.getElementById('demo-form');
+            if (form.checkValidity()) {
+                showOptimizedNotification('success', 'Form submitted successfully!');
+                closeModal('form-modal');
+                form.reset();
+            } else {
+                showOptimizedNotification('error', 'Please fill in all required fields');
+            }
+        }
+
+        function copyToClipboard(button) {
+            const code = button.nextElementSibling.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const original = button.textContent;
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = original;
+                }, 2000);
+            });
+        }
+
+        // Stress tests
+        function stressTestButtons() {
+            const container = document.getElementById('stress-test-container');
+            const fragment = document.createDocumentFragment();
+            
+            for (let i = 0; i < 100; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'btn';
+                btn.style.margin = '2px';
+                btn.innerHTML = `<i class="fas fa-star"></i> ${i + 1}`;
+                btn.onclick = () => showOptimizedNotification('info', `Button ${i + 1} clicked!`);
+                fragment.appendChild(btn);
+            }
+            
+            container.appendChild(fragment);
+            showOptimizedNotification('info', '100 buttons created with optimized event delegation!');
+        }
+
+        function stressTestNotifications() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const types = ['info', 'success', 'warning', 'error'];
+                    const type = types[i % types.length];
+                    showOptimizedNotification(type, `Notification ${i + 1} - Testing performance`);
+                }, i * 100);
+            }
+        }
+
+        function stressTestAnimations() {
+            const container = document.getElementById('stress-test-container');
+            
+            for (let i = 0; i < 50; i++) {
+                const card = document.createElement('div');
+                card.className = 'overview-card';
+                card.style.margin = '4px';
+                card.style.display = '          }
+        });
+    </script>
+</body>
+</html>
